@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Food map</title>
+	<link rel="stylesheet" href="plugin/reset.css">
+	<link rel="stylesheet" href="plugin/bootstrap.css">
+	<link rel="stylesheet" href="plugin/animate.css">
+	<link rel="stylesheet" href="foodmap_home.css">
+</head>
+<body>
+	<div class="wrapper fadeOut">
+		<div class="bgi_contain">
+			<div class="bgimg-container_north"></div>
+			<div class="bgimg-container_mid"></div>
+			<div class="bgimg-container_south"></div>
+			<div class="bgimg-container_east"></div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 map">
+					<!-- 北部 -->
+					<!-- <a href="javascript:delay('foodmap_page_north1.html')">
+					<div class="nor_circle"></div></a> -->
+					<a class="nor_a" 
+					onmouseover="ch_z1_add();"
+					onmouseout="ch_z1_sub();"
+					onclick ="fadeOut();"
+					href="javascript:delay('foodmap_page_north1.html')">
+						<div class="nor_circle"></div></a>
+					
+					<div class="north" style="background-image: url('img/home/north.svg');"></div>
+					<div class="north_y" style="background-image: url('img/home/north_y.svg');"></div>
+
+					<!-- 中部 -->
+					<!-- <a href="javascript:delay('foodmap_page_north1.html')">
+					<div class="nor_circle"></div></a> -->
+					<a class="mid_a" 
+					onmouseover="ch_z2_add();"
+					onmouseout="ch_z2_sub();"
+
+					href="javascript:delay('foodmap_page_404.html')">
+						<div class="mid_circle"></div></a>
+					
+					<div class="mid" style="background-image: url('img/home/mid.svg');"></div>
+					<div class="mid_y" style="background-image: url('img/home/mid_y.svg');"></div>
+
+					<!-- 南部 -->
+					<!-- <a href="javascript:delay('foodmap_page_north1.html')">
+					<div class="nor_circle"></div></a> -->
+					<a class="sou_a" 
+					onmouseover="ch_z3_add();"
+					onmouseout="ch_z3_sub();"
+					
+					href="javascript:delay('foodmap_page_404.html')">
+						<div class="sou_circle"></div>
+						<div class="sou_circle2"></div></a>
+					<div class="south" style="background-image: url('img/home/south.svg');"></div>
+					<div class="south_y" style="background-image: url('img/home/south_y.svg')"></div>
+
+					<!-- 東部 -->
+					<!-- <a href="javascript:delay('foodmap_page_north1.html')">
+					<div class="nor_circle"></div></a> -->
+					<a class="east_a" 
+					onmouseover="ch_z4_add();"
+					onmouseout="ch_z4_sub();"
+					
+					href="javascript:delay('foodmap_page_404.html')">
+						<div class="east_circle"></div>
+						<div class="east_circle2"></div>
+						<div class="east_circle3"></div></a>
+					<div class="east" style="background-image: url('img/home/east.svg');"></div>
+					<div class="east_y" style="background-image: url('img/home/east_y.svg');"></div>
+
+					<!-- 底圖 -->
+					<!-- <div class="bgi_contain">
+						<div class="bgimg-container_north"></div>
+					</div> -->
+					<!-- <div class="bgimg-container_mid"></div>
+					<div class="bgimg-container_east"></div>
+					<div class="bgimg-container_south"></div> -->
+				</div>
+				<div class="col-sm-6">
+					<div class="right_side">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="title_con">
+									<h1 class="title">今天去哪玩</h1>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="corner_con">
+									<div class="corner cl" style="background-image: url('img/corner_l.svg');"></div>
+									<div class="corner cr" style="background-image: url('img/corner_r.svg');"></div>
+									<div class="choose_contain cc1 u-mt-48">
+										<h1 class="choose ch1">請選擇</h1>
+									</div>
+									<div class="choose_contain cc2 u-mt-48">
+										<h1 class="choose ch_four ch2">北部</h1>
+									</div>
+									<div class="choose_contain cc3 u-mt-48">
+										<h1 class="choose ch_four ch3">中部</h1>
+									</div>
+									<div class="choose_contain cc4 u-mt-48">
+										<h1 class="choose ch_four ch4">南部</h1>
+									</div>
+									<div class="choose_contain cc5 u-mt-48">
+										<h1 class="choose ch_four ch5">東部</h1>
+									</div>
+									<!-- <div class="choose_contain u-mt-48">
+										<h1 class="choose ch1">請選擇</h1>
+										<h1 class="choose ch_four ch2">北部</h1>
+										<h1 class="choose ch_four ch3">中部</h1>
+										<h1 class="choose ch_four ch4">南部</h1>
+										<h1 class="choose ch_four ch5">東部</h1>
+									</div> -->
+								</div>	
+							</div>		
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function ch_z1_add(){
+			let elem=document.querySelector(".north_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch2");
+            elem2.style.opacity="1";
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="0";
+            let elem4=document.querySelector(".cc2");
+            elem4.style.transform = "translate(0,-110px)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,-110px)";
+            let elem6=document.querySelector(".bgimg-container_north");
+            elem6.style.opacity = "0.2";
+        };
+        function ch_z1_sub(){
+			let elem=document.querySelector(".north_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch2");
+            elem2.style.opacity="0"
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="1";
+            let elem4=document.querySelector(".cc2");
+            elem4.style.transform = "translate(0,0)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,0px)";
+            let elem6=document.querySelector(".bgimg-container_north");
+            elem6.style.opacity = "0";
+        };
+        function ch_z2_add(){
+			let elem=document.querySelector(".mid_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch3");
+            elem2.style.opacity="1"
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="0";
+            let elem4=document.querySelector(".cc3");
+            elem4.style.transform = "translate(0,-110px)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,-110px)";
+            let elem6=document.querySelector(".bgimg-container_mid");
+            elem6.style.opacity = "0.2";
+        };
+        function ch_z2_sub(){
+			let elem=document.querySelector(".mid_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch3");
+            elem2.style.opacity="0"
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="1";
+            let elem4=document.querySelector(".cc3");
+            elem4.style.transform = "translate(0,0)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,0px)";
+            let elem6=document.querySelector(".bgimg-container_mid");
+            elem6.style.opacity = "0";
+        };
+        function ch_z3_add(){
+			let elem=document.querySelector(".south_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch4");
+            elem2.style.opacity="1"
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="0";
+            let elem4=document.querySelector(".cc4");
+            elem4.style.transform = "translate(0,-110px)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,-110px)";
+            let elem6=document.querySelector(".bgimg-container_south");
+            elem6.style.opacity = "0.2";
+        };
+        function ch_z3_sub(){
+			let elem=document.querySelector(".south_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch4");
+            elem2.style.opacity="0"
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="1";
+            let elem4=document.querySelector(".cc4");
+            elem4.style.transform = "translate(0,0)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,0px)";
+            let elem6=document.querySelector(".bgimg-container_south");
+            elem6.style.opacity = "0";
+        };
+        function ch_z4_add(){
+			let elem=document.querySelector(".east_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch5");
+            elem2.style.opacity="1"
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="0";
+            let elem4=document.querySelector(".cc5");
+            elem4.style.transform = "translate(0,-110px)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,-110px)";
+            let elem6=document.querySelector(".bgimg-container_east");
+            elem6.style.opacity = "0.2";
+        };
+        function ch_z4_sub(){
+			let elem=document.querySelector(".east_y");
+            elem.style.zIndex="5";
+            elem.style.transition="0.4s";
+            let elem2=document.querySelector(".ch5");
+            elem2.style.opacity="0"
+            let elem3=document.querySelector(".ch1");
+            elem3.style.opacity="1";
+            let elem4=document.querySelector(".cc5");
+            elem4.style.transform = "translate(0,0)";
+            let elem5=document.querySelector(".cc1");
+            elem5.style.transform = "translate(0,0px)";
+            let elem6=document.querySelector(".bgimg-container_east");
+            elem6.style.opacity = "0";
+        };
+        function fadeOut(){
+			let elem=document.querySelector(".fadeOut");
+            elem.style.opacity="0";
+            elem.style.transition="0.7s";
+            elem.style.transform = 'scale(1.2)';
+            let elem2=document.querySelector("body");
+            elem2.style.overflow="hidden"
+        };
+		function delay (URL) {
+    		setTimeout( function() { window.location = URL }, 600 );
+		}
+	</script>
+</body>
+</html>

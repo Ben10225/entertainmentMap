@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>北部地區</title>
+	<link rel="stylesheet" href="plugin/reset.css">
+	<link rel="stylesheet" href="plugin/bootstrap.css">
+	<link rel="stylesheet" href="plugin/animate.css">
+	<link rel="stylesheet" href="foodmap_page_north1.css">
+</head>
+<body class="bg-color--grey">
+	<div class="wrapper">
+		<div class="main-bg">
+			<!-- 回前頁 -->
+			<div class="arrow_container">
+				<a href="foodmap_home.html">
+					<div class="arrow" style="background-image: url(img/north/arrow.svg);"></div>
+				</a>
+			</div>
+			<!-- 右上角icon & 進階畫面 -->
+			<div class="plus_container">
+				<form action="" class="form">
+					<!-- <div class="search_bar"></div> -->
+					<input class="js-input" type="text">
+					<div class="search_icon" style="background-image: url(img/north/search_icon.svg);"></div>
+					<a href="#pop_container">
+						<div class="plus_icon" style="background-image: url(img/north/plus_icon.svg);"></div>
+					</a>
+					<a href="#acc_container">
+						<div class="acc_icon" style="background-image: url(img/north/account_icon.svg);"></div>
+					</a>
+					<div id="pop_container" class="res-pop">
+						<form action="">
+							<a href="#!"><div class="close clo_f"></div></a>
+							<a href="#!"><div class="close clo_r"></div></a>
+							<a href="#!"><div class="sub_ok sub_ok_f"></div></a>
+							<a href="#!"><div class="sub_ok sub_ok_g"></div></a>
+							<!-- <a href="#!">
+							<div class="close" style="background-image: url(img/north/close.svg);
+							"></div></a>
+							<a href="#!">
+							<div class="close sub_ok" style="background-image: url(img/north/sub.svg);
+							"></div></a> -->
+							<div class="container pop_top">
+								<div class="row no-gutters">
+									<div class="col-sm-12">
+										<h2 class="pop_title">新增店家</h2>
+									</div>
+								</div>
+								<hr class="below_title">
+								<div class="to_mid">
+									<div class="row">
+										<div class="input_container ">
+											<label for="store_name" class="submit_type st_name">店家名稱:</label>
+											<input id="store_name" type="text" class="input_style">
+										</div>
+										<div class="input_container tel_pos">
+											<label for="store_tel" class="submit_type">店家電話:</label>
+											<input id="store_tel" type="number" class="input_style tel">
+										</div>
+										<div class="input_container">
+											<label for="store_address" class="submit_type">店家地址:</label>
+											<input id="store_address" type="text" class="input_style row_2">
+										</div>
+										<div class="input_container">
+											<label for="district" class="submit_type">所在縣市:</label>
+											<select id="district" onchange="giveSelection(this.value)" class="sel1">
+											    <option value="none" selected disabled hidden>區域</option>
+											    <option value="dis_n">北部</option>
+											    <option value="dis_m">中部</option>
+											    <option value="dis_s">南部</option>
+											    <option value="dis_e">東部</option>
+											</select>
+											<select id="city" class="sel2">
+											    <!-- <option value="none" selected disabled hidden>城市</option> -->
+											    <option data-option="dis_n">基</option>
+											    <option data-option="dis_n">北</option>
+											    <option data-option="dis_n">桃</option>
+											    <option data-option="dis_n">竹</option>
+											    <option data-option="dis_n">蘭</option>
+											    <option data-option="dis_m">苗</option>
+											    <option data-option="dis_m">中</option>
+											    <option data-option="dis_m">彰</option>
+											    <option data-option="dis_m">雲</option>
+											    <option data-option="dis_m">投</option>
+											    <option data-option="dis_s">嘉</option>
+											    <option data-option="dis_s">南</option>
+											    <option data-option="dis_s">高</option>
+											    <option data-option="dis_s">屏</option>
+											    <option data-option="dis_e">花</option>
+											    <option data-option="dis_e">東</option>
+											</select>
+										</div>
+											<div></div>
+											<!-- 營業時間 -->
+										<div class="input_container bt">
+											<label for="" class="submit_type">營業時間:</label>
+											<div class="day_row">
+												<span class="weekdays">星期一</span>
+												<select id="workornot" class="sel1 oclock gr" onchange="givetimeSelection(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+												<span class="weekdays zh1">至</span>
+												<select id="workornot_1" class="sel1 oclock re" onchange="givetimeSelection_1(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+											</div>
+										</div>
+										<!-- 星期二 -->
+										<div class="input_container bt">
+											<label for="" class="submit_type op0">營業時間:</label>
+											<div class="day_row">
+												<span class="weekdays">星期二</span>
+												<select id="workornot_2" class="sel1 oclock gr" onchange="givetimeSelection_2(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_2" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_2" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+												<span class="weekdays zh1">至</span>
+												<select id="workornot_2_1" class="sel1 oclock re" onchange="givetimeSelection_2_1(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_2_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_2_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+											</div>
+										</div>
+										<!-- 星期三 -->
+										<div class="input_container bt">
+											<label for="" class="submit_type op0">營業時間:</label>
+											<div class="day_row">
+												<span class="weekdays">星期三</span>
+												<select id="workornot_3" class="sel1 oclock gr" onchange="givetimeSelection_3(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_3" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_3" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+												<span class="weekdays zh1">至</span>
+												<select id="workornot_3_1" class="sel1 oclock re" onchange="givetimeSelection_3_1(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_3_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_3_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+											</div>
+										</div>
+										<!-- 星期四 -->
+										<div class="input_container bt">
+											<label for="" class="submit_type op0">營業時間:</label>
+											<div class="day_row">
+												<span class="weekdays">星期四</span>
+												<select id="workornot_4" class="sel1 oclock gr" onchange="givetimeSelection_4(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_4" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_4" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+												<span class="weekdays zh1">至</span>
+												<select id="workornot_4_1" class="sel1 oclock re" onchange="givetimeSelection_4_1(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_4_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_4_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+											</div>
+										</div>
+										<!-- 星期五 -->
+										<div class="input_container bt">
+											<label for="" class="submit_type op0">營業時間:</label>
+											<div class="day_row">
+												<span class="weekdays">星期五</span>
+												<select id="workornot_5" class="sel1 oclock gr" onchange="givetimeSelection_5(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_5" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_5" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+												<span class="weekdays zh1">至</span>
+												<select id="workornot_5_1" class="sel1 oclock re" onchange="givetimeSelection_5_1(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_5_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_5_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+											</div>
+										</div>
+										<!-- 星期六 -->
+										<div class="input_container bt">
+											<label for="" class="submit_type op0">營業時間:</label>
+											<div class="day_row">
+												<span class="weekdays">星期六</span>
+												<select id="workornot_6" class="sel1 oclock gr" onchange="givetimeSelection_6(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_6" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_6" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+												<span class="weekdays zh1">至</span>
+												<select id="workornot_6_1" class="sel1 oclock re" onchange="givetimeSelection_6_1(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_6_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_6_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+											</div>
+										</div>
+										<!-- 星期日 -->
+										<div class="input_container bt">
+											<label for="" class="submit_type op0">營業時間:</label>
+											<div class="day_row">
+												<span class="weekdays">星期日</span>
+												<select id="workornot_7" class="sel1 oclock gr" onchange="givetimeSelection_7(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_7" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_7" class="sel1 oclock gr">
+												    <option value="none" selected disabled hidden>00</option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+												<span class="weekdays zh1">至</span>
+												<select id="workornot_7_1" class="sel1 oclock re" onchange="givetimeSelection_7_1(this.value)">
+												    <option value="none" selected disabled hidden>時段</option>
+												    <option value="work">上午</option>
+												    <option value="work">下午</option>
+												    <option value="notwork">休假</option>
+												</select>
+												<select id="times_up_7_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">01</option>
+												    <option data-option="work">02</option>
+												    <option data-option="work">03</option>
+												    <option data-option="work">04</option>
+												    <option data-option="work">05</option>
+												    <option data-option="work">06</option>
+												    <option data-option="work">07</option>
+												    <option data-option="work">08</option>
+												    <option data-option="work">09</option>
+												    <option data-option="work">10</option>
+												    <option data-option="work">11</option>
+												    <option data-option="work">12</option>
+												</select>
+												<select id="times_down_7_1" class="sel1 oclock re">
+												    <option value="none" selected disabled hidden></option>
+												    <option data-option="work">00</option>
+												    <option data-option="work">30</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="pop_store_container" class="res-pop">
+						<form action="">
+							<a href="#!"><div class="close clo_f"></div></a>	
+							<a href="#!"><div class="close clo_r"></div></a>
+							<a href="#add_review_container"><div class="add_icon add_icon_f"></div></a>	
+							<a href="#add_review_container"><div class="add_icon add_icon_g"></div></a>	
+							<!-- <a href="#add_review_container">
+							<div class="close add_icon" style="background-image: url(img/north/add_review.svg);
+							"></div></a> -->
+							<div class="store_container">
+								<div class="store_title">引路Coffee</div>
+								<h2 class="star_avg">4.8</h2>
+								<div class="star_in_con">
+									<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+									<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+									<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+									<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+									<div class="star_inpop sta2" style="background-image: url(img/north/star.svg)"></div>
+								</div>
+								<h2 class="total_revs">(483)</h2>
+
+								<div class="store_tel">02-88888888</div>
+								<div class="store_add">台北市士林區德行東路80號</div>
+								<div class="store_time t1">星期一<span class="days">0800 - 2100</span></div>
+								<div class="store_time t2">星期二<span class="days">0800 - 2100</span></div>
+								<div class="store_time t3">星期三<span class="days">0800 - 2100</span></div>
+								<div class="store_time t4">星期四<span class="days">0800 - 2100</span></div>
+								<div class="store_time t5">星期五<span class="days">0800 - 2100</span></div>
+								<div class="store_time t6">星期六<span class="days">0800 - 2100</span></div>
+								<div class="store_time t7">星期日<span class="days">休假</span></div>
+							</div>
+							<div class="review_container">
+								<div class="container">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="review_inpop">
+												<div class="items_img_inpop" style="background-image: url(img/north/coffee1.jpg);"></div>
+												<div class="review_content_all">
+													<div class="review_bg_inpop"></div>
+													<div class="text_inpop">
+														<h5 class="review_name_inpop" >Ben</h5>
+														<h5 class="review_content_inpop">拿鐵推薦 價格實惠! 拿鐵推薦 價格實惠! 拿鐵推薦 價格實惠! 拿鐵推薦 價格實惠!</h5>
+													</div>
+													<div class="star_in_review">
+														<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+														<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+														<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+														<div class="star_inpop sta1" style="background-image: url(img/north/star.svg)"></div>
+														<div class="star_inpop sta2" style="background-image: url(img/north/star.svg)"></div>
+													</div>
+													<h5 class="review_time">22-10-25</h5>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="add_review_container" class="res-pop">
+						<form action="">
+							<!-- 右上角icon -->
+							<div class="add_icons">
+								<a href="#pop_store_container">
+								<div class="close clo_f"></div></a>
+								<a href="#pop_store_container">
+								<div class="close clo_r"></div></a>
+								<a href="#pop_store_container">
+								<div class="sub_ok sub_ok_f"></div></a>
+								<a href="#pop_store_container">
+								<div class="sub_ok sub_ok_g"></div></a>
+							</div>
+							<div class="add_title">
+								<h1 class="add_storeName">小陳牛肉麵</h1>
+							</div>
+							
+							<div class="star_add_review">
+								<div class="star_add_re star_ad5 tab_3" name="adds5" style="background-image: url(img/north/star_add.svg)" onclick="clickTab_3(this)"></div>
+								<div class="star_add_re star_ad4 tab_3" name="adds4" style="background-image: url(img/north/star_add.svg)" onclick="clickTab_3(this)"></div>
+								<div class="star_add_re star_ad3 tab_3" name="adds3" style="background-image: url(img/north/star_add.svg)" onclick="clickTab_3(this)"></div>
+								<div class="star_add_re star_ad2 tab_3 sa1" name="adds2" style="background-image: url(img/north/star_add.svg)" onclick="clickTab_3(this)"></div>
+								<div class="star_add_re star_ad1 tab_3 sa1" name="adds1" style="background-image: url(img/north/star_add.svg)" onclick="clickTab_3(this)"></div>
+							</div>
+							<div class="pic_add_container padd_1">
+								<input type="file" id= "image_uploads1" data-target="file-uploader" accept="image/*" class="pic_in_1">
+								<div class="preview">
+									<div class="preview_img"><img class="image1" alt=""></div>
+								</div>
+								<div class="pic_add"></div>
+								<div class="add_img" style="background-image: url('img/north/add_review_fff.svg');"></div>
+							</div>
+							<div class="pic_add_container padd_2">
+								<input type="file" id= "image_uploads2" data-target="file-uploader" accept="image/*" class="pic_in_1">
+								<div class="preview">
+									<div class="preview_img"><img class="image2" alt=""></div>
+								</div>
+								<div class="pic_add"></div>
+								<div class="add_img" style="background-image: url('img/north/add_review_fff.svg');"></div>
+							</div>
+							<div class="pic_add_container padd_3">
+								<input type="file" id= "image_uploads3" data-target="file-uploader" accept="image/*" class="pic_in_1">
+								<div class="preview">
+									<div class="preview_img"><img class="image3" alt=""></div>
+								</div>
+								<div class="pic_add"></div>
+								<div class="add_img" style="background-image: url('img/north/add_review_fff.svg');"></div>
+							</div>
+							<h3 class="atleast_3">※請至少上傳一張圖片</h3>
+							<div class="ta_add">
+								<textarea name="lab_re" rows="5" cols="40" placeholder="請留下評論"></textarea>
+							</div>
+						</form>
+					</div>
+					<div id="acc_container" class="res-pop">
+						<form method="post" action="#!" name="form">
+							<!-- 右上角icon -->
+							<div class="add_icons">
+								<a href="#!">
+								<div class="close clo_f"></div></a>
+								<a href="#!">
+								<div class="close clo_r"></div></a>
+								<a href="#!">
+								<div class="sub_ok sub_ok_f"></div></a>
+								<a href="#!">
+								<input type="image" src="img/north/sub.svg" class="sub_ok"></a>
+								<!-- <div class="sub_ok sub_ok_g"></div> -->
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="sign_title">
+											<h1 class="signin">登入頁面</h1>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line1">
+											<label class="acc_la">帳號 :</label>
+											<input type="email" class="acc_input" placeholder="請填信箱" required>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<label class="acc_la">密碼 :</label>
+											<input type="password" class="acc_input" placeholder="請填密碼" required>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<a href="#register_container"><h2 class="acc_line3 accl1">帳號申請</h2></a>
+											<h2 class="acc_line3" style="user-select: none;">｜</h2>
+											<a href="#renew_acc_container"><h2 class="acc_line3 accl2">修改資料</h2></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <input type="submit" class="acc_sub"> -->
+						</form>
+					</div>
+					<div id="register_container" class="res-pop">
+						<form action="">
+							<!-- 右上角icon -->
+							<div class="add_icons">
+								<a href="#!">
+								<div class="close clo_f"></div></a>
+								<a href="#!">
+								<div class="close clo_r"></div></a>
+								<a href="#!">
+								<div class="sub_ok sub_ok_f"></div></a>
+								<a href="#!">
+								<div class="sub_ok sub_ok_g"></div></a>
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="sign_title">
+											<h1 class="signin">帳戶申請</h1>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line1">
+											<label class="acc_la">帳號 :</label>
+											<input type="email" class="acc_input" placeholder="請填信箱">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<label class="acc_la">密碼 :</label>
+											<input type="password" class="acc_input" placeholder="請填密碼">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<label class="acc_la">暱稱 :</label>
+											<input type="password" class="acc_input" placeholder="請填暱稱">
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="renew_acc_container" class="res-pop">
+						<form action="">
+							<!-- 右上角icon -->
+							<div class="add_icons">
+								<a href="#!">
+								<div class="close clo_f"></div></a>
+								<a href="#!">
+								<div class="close clo_r"></div></a>
+								<a href="#!">
+								<div class="sub_ok sub_ok_f"></div></a>
+								<a href="#!">
+								<div class="sub_ok sub_ok_g"></div></a>
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="sign_title">
+											<h1 class="signin renew">修改資料</h1>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line1">
+											<label class="acc_la"><span style="opacity: 0;">安</span>帳號 :</label>
+											<input type="email" class="acc_input" placeholder="請填信箱">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<label class="acc_la">原密碼 :</label>
+											<input type="password" class="acc_input" placeholder="請填密碼">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<label class="acc_la">新密碼 :</label>
+											<input type="password" class="acc_input" placeholder="請填密碼">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<label class="acc_la">原暱稱 :</label>
+											<input type="text" class="acc_input" placeholder="請填暱稱">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="acc_line2">
+											<label class="acc_la">新暱稱 :</label>
+											<input type="text" class="acc_input" placeholder="請填暱稱">
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</form>		
+			</div>
+
+			<div class="map_contain">
+				<div class="for_scale">
+					<!-- 回前頁 -->
+					<!-- <div class="arrow_container">
+						<a href="foodmap_home.html">
+							<div class="arrow" style="background-image: url(img/north/arrow.svg);"></div>
+						</a>
+					</div> -->
+					<!-- 取消 -->
+					<div id="cancel" class="big_circle1 tab selected"
+					onclick="clickTab(this)"></div>
+					<!-- 雙北 -->
+					<div id="tai" class="taipei_circle1 tab selected"
+					onmouseover="ch_ztp_add()"
+					onmouseout="ch_ztp_sub();"
+					onmousedown="ch_tp_title();" 
+					onclick="clickTab(this);"
+					></div>
+					<div class="taipei_circle2 tab selected"></div>
+					<div class="taipei_circle3 tab selected"></div>
+					<div class="taipei" style="background-image: url(img/north/taipei.svg);"></div>
+					<div class="taipei_y" style="background-image: url(img/north/taipei_y.svg);"></div>
+					<div class="taipei_b" style="background-image: url(img/north/taipei_b.svg);"></div>
+
+					<!-- 基隆 -->
+					<div id="kee" class="keelung_circle1 tab selected"
+					onmouseover="ch_zkee_add()"
+					onmouseout="ch_zkee_sub();"
+					onmousedown="ch_kee_title();"
+					onclick="clickTab(this)"></div>
+					<div class="keelung" style="background-image: url(img/north/keelung.svg);"></div>
+					<div class="keelung_y" style="background-image: url(img/north/keelung_y.svg);"></div>
+					<div class="keelung_b" style="background-image: url(img/north/keelung_b.svg);"></div>
+					<!-- 宜蘭 -->
+					<div id="yi" class="yilan_circle1 tab selected"
+					onmouseover="ch_zyi_add()"
+					onmouseout="ch_zyi_sub();"
+					onclick="clickTab(this)"></div>
+					<div class="yilan_circle2 tab selected"></div>
+					<div class="yilan" style="background-image: url(img/north/yilan.svg);"></div>
+					<div class="yilan_y" style="background-image: url(img/north/yilan_y.svg);"></div>
+					<div class="yilan_b" style="background-image: url(img/north/yilan_b.svg);"></div>
+					<!-- 桃園 -->
+					<div id="tao" class="taoyuan_circle1 tab selected" 
+					onmouseover="ch_ztao_add()"
+					onmouseout="ch_ztao_sub();"
+					onclick="clickTab(this)"></div>
+					<div class="taoyuan_circle2 tab selected"></div>
+					<div class="taoyuan" style="background-image: url(img/north/taoyuan.svg);"></div>
+					<div class="taoyuan_y" style="background-image: url(img/north/taoyuan_y.svg);"></div>
+					<div class="taoyuan_b" style="background-image: url(img/north/taoyuan_b.svg);"></div>
+					<!-- 新竹 -->
+					<div id="hsin" class="hsinchu_circle1 tab"
+					onmouseover="ch_zhsin_add()"
+					onmouseout="ch_zhsin_sub();"
+					onclick="clickTab(this)"></div>
+					<div class="hsinchu" style="background-image: url(img/north/hsinchu.svg);"></div>
+					<div class="hsinchu_y" style="background-image: url(img/north/hsinchu_y.svg);"></div>
+					<div class="hsinchu_b" style="background-image: url(img/north/hsinchu_b.svg);"></div>
+
+					<h2 class="disn tai_d">北</h2>
+					<h2 class="disn kee_d">基</h2>
+					<h2 class="disn yi_d">蘭</h2>
+					<h2 class="disn tao_d">桃</h2>
+					<h2 class="disn hsin_d">竹</h2>
+				</div>
+					
+			</div>
+
+			<div class="right_container">
+				<div class="select_container">
+					<div class="district">
+						<!-- 佔位子用 透明度 0-->
+						<h2 class="dis tai_d">北</h2>
+						<h2 class="dis kee_d">基</h2>
+						<h2 class="dis yi_d">蘭</h2>
+						<h2 class="dis tai">桃</h2>
+						<h2 class="dis tai">竹</h2>
+					</div>
+					<div class="destination">
+						<h2 class="dest dot">。</h2>
+						<!-- <button class="button_e active"></button>
+						<button class="button_v active"></button>
+						<button class="button_s active"></button> -->
+						<h2 name="eat1" class="dest eat tab_2 dest_text" onclick="clickTab_2(this)">食</h2>
+						<h2 name="view1" class="dest view tab_2 dest_text" onclick="clickTab_2(this)">景</h2>
+						<h2 name="sleep1" class="dest sleep tab_2 dest_text" onclick="clickTab_2(this)">宿</h2>
+						<div class="can_dest_box tab_2" onclick="clickTab_2(this)"></div>
+					</div>
+				</div>
+				<hr class="mline">
+				<div class="items_container">	
+					<div class="items_all_container">
+						<div class="items">
+							<a href="#pop_store_container" class="its_ctrl">
+								<div class="items_img" style="background-image: url(img/north/coffee1.jpg);"></div>
+								<div class="items_box"></div>
+								<div class="storename">
+									<h3>引路 Coffee
+										<span>4.2
+										<div class="star_text total_r">(100)</div>
+										<div class="star_img" style="background-image: url(img/north/star.svg)"></div>
+										</span>
+									</h3>
+								</div>
+									
+								<div class="review">
+									<h5 class="review_name" >Ben</h5>
+									<h5 class="review_content">拿鐵推薦 價格實惠!</h5>
+								</div>
+							</a>
+						</div>
+
+						<div class="items">
+							<a href="##" class="its_ctrl">
+								<div class="items_img" style="background-image: url(img/north/beef1.jpg);"></div>
+								<div class="items_box"></div>
+								<div class="storename">
+									<h3>小陳牛肉麵
+										<span>4.2
+										<div class="star_text total_r">(13)</div>
+										<div class="star_img" style="background-image: url(img/north/star.svg)"></div>
+										</span>
+									</h3>
+								</div>
+									
+								<div class="review">
+									<h5 class="review_name" >阿明</h5>
+									<h5 class="review_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, esse.</h5>
+								</div>
+							</a>
+						</div>
+
+						<div class="items">
+							<a href="##" class="its_ctrl">
+								<div class="items_img" style="background-image: url(img/north/fish1.jpg);"></div>
+								<div class="items_box"></div>
+								<div class="storename">
+									<h3>西湖
+										<span>4.0
+										<div class="star_text total_r">(50)</div>
+										<div class="star_img" style="background-image: url(img/north/star.svg)"></div>
+										</span>
+									</h3>
+								</div>	
+								<div class="review">
+									<h5 class="review_name" >阿明</h5>
+									<h5 class="review_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, esse.</h5>
+								</div>
+							</a>
+						</div>
+
+						<div class="items">
+							<a href="##" class="its_ctrl">
+								<div class="items_img" style="background-image: url(img/north/fish1.jpg);"></div>
+								<div class="items_box ibf"></div>
+								<div class="storename">
+									<h3>西湖
+										<span>4.0
+										<div class="star_text total_r">(50)</div>
+										<div class="star_img" style="background-image: url(img/north/star.svg)"></div>
+										</span>
+									</h3>
+								</div>	
+								<div class="review">
+									<h5 class="review_name" >阿明</h5>
+									<h5 class="review_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, esse.</h5>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="plugin/jquery-3.6.0.min.js"></script>
+	<script src="foodmap_page_north1.js">
+
+
+	
+	</script>
+
+</body>
+</html>	
