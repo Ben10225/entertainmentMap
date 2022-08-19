@@ -141,20 +141,6 @@ $("body").click(function(e){
 function myFunction() {
         window.location.href="foodmap_page_north1.html";
     }
-/*
-$("body").click(function(f){  
-	//debugger
-    var btn = $(".dest_text");
-    // 判斷點擊的地方不是DIV或按鈕
-    if(!btn.is(f.target)
-      ){
-        $(".dest_text").parent().find(".tab_2").
-		removeClass("active2");
-    }  
-});
-*/
-
-
 
 let district = document.querySelector('#district');
 let city = document.querySelector('#city');
@@ -512,17 +498,7 @@ function givetimeSelection_7_1(selValue) {
 givetimeSelection_7_1(workornot.value);
 
 
-// -----------------------
-/*
-const curFile = curFiles[0]; // 透過 input 取得的 file object
-const reader = new FileReader();
-reader.onload = function (e) {
-  console.log('file:', e.target.result);
-};
 
-// 使用 readAsDataURL 將圖片轉成 Base64
-reader.readAsDataURL(curFile);
-*/
 
 //------------------------
 /*
@@ -625,67 +601,4 @@ $(function() {
 });
 
 
-
-
-// $("body").click(function(){
-//   $(".js-input").hide();
-// });
-
-// $(".js-input").click(function(e){
-//   e.stopPropagation();
-// });
-
-// $(".search_icon").click(function(e){
-//   e.stopPropagation();
-//   $(".js-input").toggle();
-// });
-
-// $('search_icon').unbind(".js-input");
-	
-
-
-// $(".search_icon").blur(function(){
-// 	if($(this).val().length == 0){
-// 		$(this).parent().find(".js-input").
-// 		removeClass("is-active");
-// 	}
-// })
-
-
-
-function cur(){
-	let zin = window.getComputedStyle(document.querySelector('.taipei_y')).zIndex;
-	if (zin > 0){
-		elem.style.cursor="pointer";
-	};
-};
-
-//       $('button').on('click', function(){
-//     $('button').removeClass('selected');
-//     $(this).addClass('selected');
-// });
-
-//       $('.tab_2').on('click', function(){
-//     $('.tab_2').removeClass('.selected_2');
-//     $(this).addClass('.selected_2');
-// });
-
-
-/*
-document.getElementById('cancel').onclick = function() {
-    let radio = document.querySelector('input[type=radio][name=language]:checked');
-    radio.checked = false;
-};
-*/
-
-/*
-jQuery('.taipei_circle1').click(function(){
-   jQuery(this).toggleClass('active');
-});
-function btn(){
-	let elem=document.querySelector(".taipei_b");
-    elem.style.zIndex="5";
-    elem.body.style.opacity="0";
-};
-*/
 
