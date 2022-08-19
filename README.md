@@ -6,5 +6,5 @@
 整體架構是想做類似台灣的旅遊地圖\
 但著重在食、住、景點的推薦
 
-demo連結在以下(目前只有北部有做demo 其他的地區會404)
+demo連結在以下(目前只有北部有做demo 其他的地區會404)\
 https://ben10225.github.io/entertainmentMap/foodmap_home.html
